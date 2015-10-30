@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    
+<!-- 重量 -->
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+ >
+ <TextView android:layout_width="80dp"
+           android:layout_height="30dp"
+           android:layout_marginTop="15dp"
+           android:layout_marginLeft="45dp"
+           android:textSize="22dp"
+           android:textStyle="bold"
+           android:text="@string/lblWeight"/>
+ 
+ <EditText android:layout_width="150dp"
+           android:layout_height="39dp"
+           android:layout_marginTop="13dp"
+           android:layout_marginLeft="125dp"
+           android:hint="@string/strNull"
+           android:id="@+id/txtWeight"
+           android:inputType="numberDecimal"
+           />
+</RelativeLayout>
+<!-- 重量 end-->
+
+<!-- 颜色 -->
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+ >
+ 
+ <TextView android:layout_width="80dp"
+           android:layout_height="50dp"
+           android:layout_marginTop="14dp"
+           android:layout_marginLeft="45dp"
+           android:textSize="22dp"
+           android:textStyle="bold"
+           android:text="@string/lblColor"/>
+ 
+ <Spinner android:layout_width="150dp"
+           android:layout_height="39dp"
+           android:layout_marginTop="13dp"
+           android:layout_marginLeft="125dp"
+           android:hint="@string/strNull"
+           android:id="@+id/spinnerColor"
+           />
+</RelativeLayout>
+<!-- 颜色 end-->
+
+<!-- 净度 -->
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+ >
+  <TextView android:layout_width="80dp"
+           android:layout_height="30dp"
+           android:layout_marginTop="0dp"
+           android:layout_marginLeft="45dp"
+           android:textSize="22dp"
+           android:textStyle="bold"
+           android:text="@string/lblNet"/>
+ 
+ <Spinner android:layout_width="150dp"
+           android:layout_height="39dp"
+           android:layout_marginTop="0dp"
+           android:layout_marginLeft="125dp"
+           android:hint="@string/strNull"
+           android:id="@+id/spinnerNet"
+           />
+</RelativeLayout>
+<!-- 净度 end -->
+
+
+<!-- 美元单价 -->
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+ >
+  <TextView android:layout_width="150dp"
+           android:layout_height="45dp"
+           android:layout_marginTop="15dp"
+           android:layout_marginLeft="30dp"
+           android:textSize="20dp"
+           android:textStyle="bold"
+           android:text="@string/US_unitPrice"/>
+ 
+ <TextView android:layout_width="150dp"
+           android:layout_height="45dp"
+           android:layout_marginTop="15dp"
+           android:layout_marginLeft="150dp"
+           android:textSize="20dp"
+           android:textStyle="bold"
+           android:id="@+id/txtUS"
+           android:text="@string/nullUsPrice"/>
+</RelativeLayout>
+<!-- 美元单价 end -->
+
+<!-- 人民币单价 -->
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+ >
+  <TextView android:layout_width="150dp"
+           android:layout_height="45dp"
+           android:layout_marginTop="5dp"
+           android:layout_marginLeft="30dp"
+           android:textSize="20dp"
+           android:textStyle="bold"
+           android:text="@string/RMB_unitPrice"/>
+ 
+ <TextView android:layout_width="150dp"
+           android:layout_height="45dp"
+           android:layout_marginTop="5dp"
+           android:layout_marginLeft="150dp"
+           android:textSize="20dp"
+           android:textStyle="bold"
+           android:id="@+id/txtRMB"
+           android:text="@string/nullRmbPrice"/>
+</RelativeLayout>
+<!-- 人民币单价 end -->
+
+
+
+
+
+<!-- 按钮：设置与退出 -->
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+ 
+  <Button  android:layout_width="60dp"
+           android:layout_height="35dp"
+           android:layout_marginTop="5dp"
+           android:layout_marginLeft="30dp"
+           android:id="@+id/btnExchange"
+           android:text="@string/btnExchange"   />
+    
+  <Button  android:layout_width="60dp"
+           android:layout_height="35dp"
+           android:layout_marginTop="5dp"
+           android:layout_marginLeft="125dp"
+           android:id="@+id/btnSet"
+           android:text="@string/btnSet"   />
+  
+  <Button  android:layout_width="60dp"
+           android:layout_height="35dp"
+           android:layout_marginTop="5dp"
+           android:layout_marginLeft="220dp"
+           android:id="@+id/btnExit"
+           android:text="@string/btnExit"   />
+</RelativeLayout>
+<!-- 设置与退出end -->
+ </LinearLayout>

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    
+<!-- 重量 -->
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+ >
+ <TextView android:layout_width="80dp"
+           android:layout_height="30dp"
+           android:layout_marginTop="15dp"
+           android:layout_marginLeft="45dp"
+           android:textSize="22dp"
+           android:textStyle="bold"
+           android:text="@string/lblWeight"/>
+ 
+ <EditText android:layout_width="150dp"
+           android:layout_height="39dp"
+           android:layout_marginTop="13dp"
+           android:layout_marginLeft="125dp"
+           android:hint="@string/strNull"
+           android:id="@+id/txtWeight"
+           android:inputType="numberDecimal"
+           />
+</RelativeLayout>
+<!-- 重量 end-->
+
+<!-- 颜色 -->
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+ >
+ 
+ <TextView android:layout_width="80dp"
+           android:layout_height="50dp"
+           android:layout_marginTop="14dp"
+           android:layout_marginLeft="45dp"
+           android:textSize="22dp"
+           android:textStyle="bold"
+           android:text="@string/lblColor"/>
+ 
+ <Spinner android:layout_width="150dp"
+           android:layout_height="39dp"
+           android:layout_marginTop="13dp"
+           android:layout_marginLeft="125dp"
+           android:hint="@string/strNull"
+           android:id="@+id/spinnerColor"
+           />
+</RelativeLayout>
+<!-- 颜色 end-->
+
+<!-- 净度 -->
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+ >
+  <TextView android:layout_width="80dp"
+           android:layout_height="30dp"
+           android:layout_marginTop="0dp"
+           android:layout_marginLeft="45dp"
+           android:textSize="22dp"
+           android:textStyle="bold"
+           android:text="@string/lblNet"/>
+ 
+ <Spinner android:layout_width="150dp"
+           android:layout_height="39dp"
+           android:layout_marginTop="0dp"
+           android:layout_marginLeft="125dp"
+           android:hint="@string/strNull"
+           android:id="@+id/spinnerNet"
+           />
+</RelativeLayout>
+<!-- 净度 end -->
+
+<!-- 单价 -->
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+ >
+ <TextView android:layout_width="80dp"
+           android:layout_height="30dp"
+           android:layout_marginTop="15dp"
+           android:layout_marginLeft="45dp"
+           android:textSize="22dp"
+           android:textStyle="bold"
+           android:text="@string/lblUnitPrice"/>
+ 
+ <EditText android:layout_width="150dp"
+           android:layout_height="39dp"
+           android:layout_marginTop="13dp"
+           android:layout_marginLeft="125dp"
+           android:hint="@string/strNull"
+           android:id="@+id/txtUnitPrice"
+           android:inputType="numberDecimal"
+           />
+</RelativeLayout>
+<!-- 单价 end-->
+
+<!-- 折扣 -->
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+ >
+ <TextView android:layout_width="80dp"
+           android:layout_height="30dp"
+           android:layout_marginTop="15dp"
+           android:layout_marginLeft="45dp"
+           android:textSize="22dp"
+           android:textStyle="bold"
+           android:text="@string/lblDiscount"/>
+ 
+ <EditText android:layout_width="75dp"
+           android:layout_height="39dp"
+           android:layout_marginTop="13dp"
+           android:layout_marginLeft="125dp"
+           android:hint="@string/strNull"
+           android:id="@+id/txtDiscount"
+           android:inputType="numberDecimal"
+           />
+</RelativeLayout>
+<!-- 折扣 end-->
+
+<!-- 总价 -->
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+ >
+ <TextView android:layout_width="80dp"
+           android:layout_height="30dp"
+           android:layout_marginTop="15dp"
+           android:layout_marginLeft="45dp"
+           android:textSize="22dp"
+           android:textStyle="bold"
+           android:text="@string/lblTotalPrice"/>
+ 
+ <EditText android:layout_width="150dp"
+           android:layout_height="39dp"
+           android:layout_marginTop="13dp"
+           android:layout_marginLeft="125dp"
+           android:hint="@string/strNull"
+           android:id="@+id/txtTotalPrice"
+           android:inputType="numberDecimal"
+           />
+</RelativeLayout>
+<!-- 总价 end-->
+
+<!-- 美元模式和人民币模式  -->
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+ 
+  <RadioGroup  
+        android:id="@+id/radiogroup1"  
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"  
+         android:layout_marginTop="25dp"
+        android:orientation="horizontal"   
+    > 
+
+ <RadioButton
+    android:id="@+id/rdbUS"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="7dp"
+    android:layout_marginLeft="45dp"
+    android:text="@string/rdbUS_model" />
+ 
+ <RadioButton
+    android:id="@+id/rdbRMB"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="7dp"
+    android:layout_marginLeft="75dp"
+    android:checked="true"
+    android:text="@string/rdbRMB_model" />
+ 
+</RadioGroup>      
+      
+</RelativeLayout>
+<!-- 美元模式和人民币模式 end -->
+
+<!-- 按钮：设置与刷新-->
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+ 
+  <Button  android:layout_width="60dp"
+           android:layout_height="35dp"
+           android:layout_marginTop="39dp"
+           android:layout_marginLeft="41dp"
+           android:id="@+id/btnExchange"
+           android:text="@string/btnExchange"   />
+    
+  <Button  android:layout_width="60dp"
+           android:layout_height="35dp"
+           android:layout_marginTop="39dp"
+           android:layout_marginLeft="136dp"
+           android:id="@+id/btnSet"
+           android:text="@string/btnSet"   />
+  
+  <Button  android:layout_width="60dp"
+           android:layout_height="35dp"
+           android:layout_marginTop="39dp"
+           android:layout_marginLeft="228dp"
+           android:id="@+id/btnRefresh"
+           android:text="@string/btnRefresh"   />
+</RelativeLayout>
+<!-- 设置与刷新end -->
+<TextView android:layout_width="260dp"
+           android:layout_height="31dp"
+           android:layout_marginTop="30dp"
+           android:layout_marginLeft="86dp"
+           android:textSize="8dp"
+           android:textStyle="bold"
+           android:text="@string/copyright"/>
+ </LinearLayout>

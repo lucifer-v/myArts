@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, DiamoPriceActivity!</string>
+    <string name="app_name">前缘v1.2</string>
+    <string name="set_name">前缘珠宝汇率设置器v1.2</string>
+    <string name="copyright">Copyright © 2012 Lucifer In NanHua University, Hengyang</string>
+    <string name="strNull"></string>
+    <string name="nullRmbPrice">￥0.00</string>
+    <string name="nullUsPrice">＄0.00</string>
+    <string name="lblWeight">重  量：</string>
+    <string name="lblColor">颜  色：</string>
+    <string name="lblNet">净  度：</string>
+    
+    <string name="US_unitPrice">美 元 单 价 ：</string>
+    <string name="RMB_unitPrice">人民币单价：</string>
+    
+    <string name="lblUnitPrice">单  价：</string>
+    <string name="lblDiscount">折  扣：</string>
+    <string name="lblTotalPrice">总  价：</string>
+    
+    <string name="rdbUS_model">USD</string>
+    <string name="rdbRMB_model">CNY</string>
+    
+    <string name="btnExchange">汇  率</string>
+    <string name="btnSet">设  置</string>
+    <string name="btnRefresh">刷  新</string>
+        
+    <string name="exchangeSetting">汇 率 设 定</string>
+    <string name="lblSetExchange">输入汇率：</string>
+    <string name="btnConfirm">确  定</string>
+    <string name="btnBack">返  回</string>
+</resources>
