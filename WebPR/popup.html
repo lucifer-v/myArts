@@ -30,20 +30,6 @@ function showPrice(  ){
 		enablePriceText();		//启用文本框
 }//func
 
-/**  **/
-function priceChangeByUnitPrice(){
-
-}//func
-
-/**  **/
-function priceChangeByDiscount(){
-
-}//func
-
-function priceChangeByTotalPrice(){
-
-}//func
-
 /** 清除所有的价格相关的输入框 **/
 function clearPriceText(){
 
@@ -81,6 +67,9 @@ $(function(){
 		wpr.selcClarity = $("#selc_clarity");
 		wpr.rate = null,  wpr.unitPriceUSD = null, wpr.discount = null;		//汇率、美元、折扣
 		wpr.isUSD = false;										//是否显示美元
+		
+		//初始状态，禁用单价、折扣、总价
+		 disablePriceText();
 		
 		//获取汇率
 		$.get("response/rspGetRate.php", function( _rate ){
