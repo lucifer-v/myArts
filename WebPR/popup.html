@@ -1,0 +1,303 @@
+<style>
+.wpr_wrap { width:170px; height:300px; color:#FFF; background:url(./images/wpr_bg.png); }
+.hdivider_15 { display:inline-block; width:15px;}
+
+.wpr_list {margin-left:8px;line-height:28px;padding-top:10px;}
+.wpr_list .text {width:90px; text-align:center;  }
+.wpr_list .selc{width:95px; text-align:center;  }
+
+.wpr_list .td_currency, .wpr_list .td_btnGrp {text-align:center;}
+.wpr_list .td_currency input, .wpr_list .td_btnGrp input { cursor:pointer;}
+
+</style>
+<script>
+/** 首次获取到价格 **/
+function showPrice(  ){
+		
+		var wpr = window.wpr;
+		if( -1 == wpr.selcColor.val() ){		//如果没有要显示价格，则返回
+				return;
+		}
+
+		var unitPrice = ( wpr.isUSD ) ? wpr.unitPriceUSD : wpr.unitPriceUSD*wpr.rate ;
+		
+		unitPrice = Math.round( unitPrice * wpr.discount /100 );		//折后单价
+		wpr.txtUnitPrice.val( unitPrice );
+		wpr.txtDiscount.val( wpr.discount );
+
+		var totalPrice = Math.round( wpr.txtWt.val() * unitPrice );		//总价舍入
+		wpr.txtTotalPrice.val( totalPrice );		//总价
+		enablePriceText();		//启用文本框
+}//func
+
+/**  **/
+function priceChangeByUnitPrice(){
+
+}//func
+
+/**  **/
+function priceChangeByDiscount(){
+
+}//func
+
+function priceChangeByTotalPrice(){
+
+}//func
+
+/** 清除所有的价格相关的输入框 **/
+function clearPriceText(){
+
+		wpr = window.wpr;
+		wpr.txtUnitPrice.val("");
+		wpr.txtDiscount.val("");
+		wpr.txtTotalPrice.val("");
+}//func
+
+/** 禁用价格相关输入框 **/
+function disablePriceText(){
+
+		wpr = window.wpr;
+		wpr.txtUnitPrice.prop("disabled", true);
+		wpr.txtDiscount.prop("disabled", true);
+		wpr.txtTotalPrice.prop("disabled", true);
+}//func
+
+/** 启用价格相关输入框 **/
+function enablePriceText(){
+		
+		wpr = window.wpr;
+		wpr.txtUnitPrice.prop("disabled", false);
+		wpr.txtDiscount.prop("disabled", false);
+		wpr.txtTotalPrice.prop("disabled", false);
+}//func
+
+$(function(){
+		wpr = window.wpr = {} ;   //报价器对象
+		wpr.txtWt = $("#txt_wprWt");
+		wpr.txtUnitPrice = $("#txt_wprUnitPrice");
+		wpr.txtDiscount = $("#txt_wprDiscount");
+		wpr.txtTotalPrice = $("#txt_wprTotalPrice");
+		wpr.selcColor = $("#selc_color");
+		wpr.selcClarity = $("#selc_clarity");
+		wpr.rate = null,  wpr.unitPriceUSD = null, wpr.discount = null;		//汇率、美元、折扣
+		wpr.isUSD = false;										//是否显示美元
+		
+		//获取汇率
+		$.get("response/rspGetRate.php", function( _rate ){
+				wpr.rate = parseFloat( _rate );
+		});
+
+		/* 查看汇率 */
+		$("#btn_showRate").click(function(){
+				alert( "当前[美元 vs. 人民币]汇率为: " + wpr.rate);
+		});
+
+		/* 修改汇率 */
+		$("#btn_setRate").click(function(){
+
+				if( (newRate = prompt("输入汇率(美元-人民币)") ) == null ){
+						return ;
+				}
+				newRate = parseFloat( newRate.trim() );		//数值化处理
+				newRate = ( isNaN(newRate) ) ? 0 :  newRate ;
+				
+				$.post("response/rspUpdateRate.php", { 'newRate' : newRate }, function(_rspResult){
+						var rspObj = JSON.parse(_rspResult);
+						
+						if( 0 == rspObj.state ){		//成功
+								alert( rspObj.sucMsg );
+								wpr.rate = newRate;
+						}else{
+								alert( rspObj.errMsg );
+						}//else
+				});//post
+		});//click
+
+		//重量输入框
+		$("#txt_wprWt").keyup(function( _e ){
+				//document.title = _e.keyCode;
+				//如果是方向键
+				if( 37<=_e.keyCode && _e.keyCode <= 40  ){
+						return;
+				}
+				//如果是除了回退、删除以及数字键的其他按键
+				if( (_e.keyCode < 48 || _e.keyCode > 57) && 
+				     ( 8 != _e.keyCode ) && ( 46 != _e.keyCode ) ){
+						$("#selc_color, #selc_clarity").html( "<option value='-1'>--NULL--</option>" );
+						clearPriceText();		//清除并禁用
+						disablePriceText();
+						return ;
+				}
+
+				var weight = $(this).val().trim();						//获取重量
+
+				var currency = $(":radio:checked").val();		//获取货币
+				var reqUrl = "response/rspColorAndClarityOpts.php";		//请求地址
+
+				$.post( reqUrl, { 'weight': weight, 'currency':currency }, function( _rspResult ){
+						//alert(_rspResult);  return;
+ 
+						var rspObj = JSON.parse( _rspResult );
+						$("#selc_color").html( rspObj.colorOptions );
+						$("#selc_clarity").html( rspObj.clarityOptions );
+
+						if( 0 == rspObj.state ){
+								wpr.unitPriceUSD =  rspObj.unitPriceUSD;
+								wpr.discount = 100;
+								showPrice();		//显示价格
+						}else{		//其他不成功的情况
+								clearPriceText();		//清除并禁用
+								disablePriceText();
+						}
+				} )//post
+		});//keyup
+		
+		//颜色净度下拉列表
+		$( "#selc_clarity, #selc_color" ).change(function(){
+				
+				var $this = $(this),  wpr = window.wpr;
+				var idStr = $(this).attr('id');
+				var weight, color, clarity, currency;
+				var reqUrl = "response/rspUnitPrice.php";
+
+				if( idStr.indexOf( "color" ) > -1 ){		//如果是selc_color
+						color = $this.val();
+						clarity = wpr.selcClarity.val();
+				}else{
+						color = wpr.selcColor.val();
+						clarity = $this.val();
+				}
+				weight = wpr.txtWt.val().trim();
+				currency = $(":radio:checked").val();
+
+				$.post( reqUrl, 
+							   { 'weight':weight, 'currency':currency, 'color':color, 'clarity':clarity }, 
+							   function( _rspResult ){
+										//alert(_rspResult);
+										var rspObj = JSON.parse( _rspResult );
+										if( 0 == rspObj.state ){		//如果成功
+												wpr.unitPriceUSD = rspObj.unitPriceUSD;
+												wpr.discount = 100;
+												showPrice();		//显示价格
+										}
+								}//callback
+				);//post
+		});//change
+
+		//'货币'单选按钮
+		$(":radio").click(function(){
+				if( "USD" == $(this).val() ){
+						wpr.isUSD = true;		
+				}else{
+						wpr.isUSD = false;
+				}
+				showPrice();
+		});//click
+		
+		//价格相关数据框
+		$("#txt_wprUnitPrice, #txt_wprDiscount, #txt_wprTotalPrice").keyup(function( _e ){
+				//如果是方向键
+				if( 37<=_e.keyCode && _e.keyCode <= 40  ){
+						return;
+				}
+				//如果是除了回退、删除以及数字键的其他按键
+				if( (_e.keyCode < 48 || _e.keyCode > 57) && 
+				     ( 8 != _e.keyCode ) && ( 46 != _e.keyCode ) ){
+						return ;
+				}
+				
+				//计算折扣--以人民币算
+				var $this = $(this);
+				 if( "txt_wprDiscount" == $this.attr('id') ){		//折扣
+						wpr.discount = $this.val();
+						showPrice();
+				 }else if( "txt_wprUnitPrice" == $this.attr('id') ){		//单价
+						var curUnitPrice = wpr.txtUnitPrice.val().trim();
+
+						if( wpr.isUSD ){		//如果是按美元显示
+								var discount = Math.ceil( curUnitPrice/wpr.unitPriceUSD*100 );
+								var curTotalPrice = Math.round( curUnitPrice*wpr.txtWt.val().trim() );
+						}else{		//如果是按人民币显示
+								var discount = Math.ceil( curUnitPrice/wpr.unitPriceUSD/wpr.rate*100 );
+								var curTotalPrice = Math.round( curUnitPrice*wpr.txtWt.val().trim() );
+						}
+
+						wpr.discount = discount;
+						wpr.txtDiscount.val( discount );
+						wpr.txtTotalPrice.val( curTotalPrice );
+				 }else{		//总价
+						var curTotalPrice = wpr.txtTotalPrice.val().trim();
+
+						if( wpr.isUSD ){		//如果是按美元显示
+								var discount = Math.ceil( curTotalPrice/wpr.unitPriceUSD/wpr.txtWt.val().trim()*100 );
+								var curUnitPrice = Math.round(wpr.unitPriceUSD*discount/100);
+						}else{		//如果是按人民币显示
+								var discount = Math.ceil( curTotalPrice/wpr.unitPriceUSD/wpr.txtWt.val().trim()/wpr.rate*100 );
+								var curUnitPrice = Math.round( wpr.unitPriceUSD*wpr.rate*discount/100 );
+						}
+
+						wpr.discount = discount;
+						wpr.txtDiscount.val( discount );
+						wpr.txtUnitPrice.val( curUnitPrice );
+
+				 }//else
+		});//keyup		
+
+});//load
+</script>
+<div class="wpr_wrap">
+		<form autocomplete="off">
+		<table class="wpr_list">
+				<tbody>
+						<tr>
+								<td>重量：</td>
+								<td>
+										<input type="text" id="txt_wprWt" class="text"/>
+								</td>
+						</tr>
+						<tr>
+								<td>颜色：</td>
+								<td>
+										<select id="selc_color" class="selc">
+												<option value='-1'>--NULL--</option>
+										</select>
+								</td>
+						</tr>
+						<tr>
+								<td>净度：</td>
+								<td>
+										<select id="selc_clarity" class="selc">
+												<option value='-1'>--NULL--</option>
+										</select>
+								</td>
+						</tr>
+						<tr>
+								<td>单价：</td>
+								<td><input type="text" id="txt_wprUnitPrice" class="text"/></td>
+						</tr>
+						<tr>
+								<td>折扣：</td>
+								<td><input type="text" id="txt_wprDiscount" class="text"/></td>
+						</tr>
+						<tr>
+								<td>总价：</td>
+								<td><input type="text" id="txt_wprTotalPrice" class="text"/></td>
+						</tr>
+						<tr>
+								<td colspan="2" class="td_currency">
+										<label><input type="radio" name="rdo_currency" value="USD"/>USD</label>
+										<span class="hdivider_15"></span>
+										<label><input type="radio" name="rdo_currency" value="CNY" checked="checked">CNY</label>
+								</td>
+						</tr>
+						<tr>
+								<td colspan="2" class="td_btnGrp">
+										<input type="button" id="btn_showRate" value="查看" title="查看汇率"/>
+										<span class="hdivider_15"></span>
+										<input type="button" id="btn_setRate" value="设置" title="设置汇率"/>
+								</td>
+						</tr>
+				</tbody>
+		</table>
+		</form>
+</div>
