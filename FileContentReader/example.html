@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<link type="text/css" rel="stylesheet" href="./css/filedatareader.css"/>
+<script src="./js/jquery-1.8.3.min.js"></script>
+<script src="./js/v.common.js"></script>
+<script src="./js/fileDataReader.js"></script>
+<script>
+		function handleFileContent(_data){
+				$("#container").html(_data);
+		}
+
+		$(function(){
+				var fileUploadUrl = "./php/handleUploadedDataFile.php";
+				var fileReadUrl = "./php/getCsvContent.php";
+				fileDataReader("#fdr", fileUploadUrl, fileReadUrl, null, handleFileContent);
+		});
+</script>
+<style>
+	#container {margin-top:10px;}
+	#container table {border-collapse:collapse;}
+	#container table td, #container table th { border:1px solid gray; width:50px;}
+</style>
+</head>
+<body>
+	<lable>请将下述文本复制到本地txt文件后上传</label><br />
+	<textarea style="width:250px; height:170px;">
+学号,姓名,年龄,性别
+001,daqiao,12,女
+002,xiaoqiao,11,女
+003,sunce,14,男
+004,zhouyu,15,男
+005,caocao,18,男
+006,caiwenji,13,女
+	</textarea><br />
+	<a id="fdr" class="fdr_enabled" data-disabled="fdr_disabled" data-limit="2000000" data-ext="txt" >选择文件</a>
+	<div id="container"></div>
+</body>
+</html>

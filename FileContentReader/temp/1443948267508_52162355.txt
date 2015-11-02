@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<script type="text/javascript" src="./jquery-1.7.2.js"></script>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+</body>
+</html>
+
+./configure \
+--prefix=/usr/local/lamp/php \
+--with-apxs2=/usr/local/lamp/apache/bin/apxs \
+--with-mysql=/usr/local/lamp/mysql

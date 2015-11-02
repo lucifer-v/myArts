@@ -1,0 +1,3 @@
+.fdr_enabled {display:inline-block;width:80px; height:23px; color:#FFF; background:#1581D9;cursor:pointer;
+		text-decoration:none;text-align:center;line-height:24px;font-size:0.8em;}
+.fdr_disabled {background:#CCC !important; color:#FFF !important;}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<link type="text/css" rel="stylesheet" href="./css/filedatareader.css"/>
+<script type="text/javascript" src="./js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="./js/v.common.js"></script>
+<script type="text/javascript" src="./js/fileDataReader.js"></script>
+<script>
+	//回调函数
+	function readFile(_data){
+			$("#container").val( _data );
+	}
+	
+	$(function(){
+			var fileHandleUrl = "./php/handleUploadedDataFile.php";
+			var fileReadUrl = './php/getFileContent.php';
+			fileDataReader("#btn_curFdr", fileHandleUrl,  fileReadUrl, null, readFile);
+			
+			//获取内容
+			$("#btn_getContent").click(function(){
+					alert( $("#container").val() );
+			});
+	});//load
+</script>
+</head>
+<body>
+	<form autocomplete="off">
+	<a id="btn_curFdr" class="fdr_enabled" data-disabled="fdr_disabled" data-limit="2000000" data-ext="txt,html,md" >上传</a>
+	<input type="button" id="btn_getContent" value="内容"/>
+	<br /><br />
+	请上传txt文本文件<br />
+	<textarea id="container" style="1border:1px solid gray;background:#EEE;width:700px;height:180px;"
+		placeholder="这里输入文本"></textarea>
+	</form>
+</body>
+</html>
