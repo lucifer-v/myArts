@@ -5,7 +5,7 @@
 使用<b>Ajax</b>和后台脚本相结合，处理上传的文件内容，并将处理结果显示在页面中
 ###项目DEMO1
 读取并显示上传的文本文件的内容  
-<img src="images/FCReader_demo1.png" width="300" />
+<img src="images/FCReader_demo1.png" width="550" />
 ###项目DEMO2
 读取一个CSV格式的文本文件，并以表格的形式显示出来  
 <img src="images/FCReader_demo2.png" width="300" />
