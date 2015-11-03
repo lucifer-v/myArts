@@ -6,7 +6,7 @@
 ###项目DEMO1
 <img src="images/calender_demo.png" width="450" />
 ###演示地址
-<a href="http://lucifer-v.net/Calender/" target="_blank">http://lucifer-v.net/Calender/</a>
+<a href="http://lucifer-v.net/Calender/" target="_blank">Calener万年历</a>
 
 ##DatePicker日期拾取器控件
 拾取日期，样式和显示方式可以自己设计与进一步完善
