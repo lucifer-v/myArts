@@ -1,5 +1,15 @@
 # myArts
 一些小项目或者能够复用的小插件，具体功能请君往下一看
+##Calener万年历
+实现了一个js的日历库，万年历是对此库的应用
+可以依赖此库做很多扩展的应用
+###项目DEMO1
+<img src="images/calender_demo.png" width="450" />
+
+##DatePicker日期拾取器控件
+拾取日期，样式和显示方式可以自己设计与进一步完善
+###项目DEMO1
+<img src="images/datePicker_demo.png" width="250" />
 ##FileContentReader
 文件内容读取器控件
 使用<b>Ajax</b>和后台脚本相结合，处理上传的文件内容，并将处理结果显示在页面中

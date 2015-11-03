@@ -1,0 +1,13 @@
+.dateSelector { display:inline-block; width:110px; height:25px;border:1px solid #CCC;position:relative;
+		line-height:25px;padding-left:10px;cursor:pointer;color:#666;1-moz-user-select:none;}
+.dateSelector:hover {background:#EEE;}
+
+.dts_small_ico {background:url(date-button.gif);display:inline-block;
+		width:16px; height:16px; position:absolute;top:4px;right:4px;}
+
+.dts_calendar_hide {display:none}
+.dts_calendar_over {background:#DDD;}
+
+.dts_calendar_out_container {position:absolute;border:1px solid #333;left:-1px;top:25px;}
+
+.dts_calendar_out_container table {width:300px; text-align:center;}

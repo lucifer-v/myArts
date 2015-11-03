@@ -1,0 +1,119 @@
+version_4
+版本4(相对于v3):
+【Class-Calender】
+2014-10-08 增加函数 buildControlBar() 用来生成控制日历的控制按钮组
+
+构造函数:
+Calendar(char _splitter="", obj _styleOpts=null, int _cldRows=5, int _cldCols=7)
+
+数据成员:
+Calendar.m_cldRows
+Calendar.m_cldCols
+Calendar.m_styleOpts		//日历样式配置文件
+
+Calendar.m_toDate		//今日日期,用于恢复到m_curDate
+Calendar.m_curDate		//当前日期
+Calendar.m_curCalendarDatas	//日历目前所使用的日历数据(二维数组)
+注意：不能使用Calendar.m_toDate=Calendar.m_curDate=XXX
+否则会指向同一个引用
+
+类方法:
+Calender.prototype.initCalendar(char _splitter)
+Calender.prototype.toString()
+
+Calender.prototype.buildCalendarData_en(CldDate _cldDate=null)
+Calendar.prototype.buildCalendarData_cn(CldDate _cldDate=null)
+Calendar.prototype.buildCalendarGrid_en(_lang='CN')
+Calendar.prototype.buildCalendarGrid_cn(_lang='CN')
+Calendar.prototype.buildControlBar()
+    
+Calendar.prototype.displayYrMonth($_jqObj, _CldDate=null)
+
+Calendar.prototype.addMonth()      //改变m_curDate,与m_curCalendarDatas
+Calendar.prototype.minusMonth()
+Calendar.prototype.addYear()
+Calendar.prototype.minusYear()
+Calendar.prototype.restoreDate()       //恢复m_curDate至m_toDate,与m_curCalendarDatas
+Calendar.prototype.getCertainDateObj()	
+
+【view层】
+#文件：calendar_3_view.html
+#所有的CSS-class|CSS-id都需用插件类标识前缀"cld_"
+   所有HTML控件CSS-class|CSS-id必须包括"cld_"以及"控件标识前缀"(如按钮为"btn_")
+   类标识前缀在前，控件标识前缀在后，如cld_btn_back (返回)
+
+#引用结构
+<div class="cld_container"></div>
+
+#功能完整结构
+<label>日历格式</label>
+	<select class="selc_cldFormatType" autocomplete="off">
+		<option value="CN" selected="selected">中式</option>
+		<option value="EN">西式</option>
+	</select>
+	<label>日历标题</label>
+	<select class="selc_cldTitleType" autocomplete="off">
+		<option value="CN" selected="selected">中文</option>
+		<option value="EN">英文</option>
+		<option value="NUM">数字</option>
+	</select>
+	<br /><br />
+	
+	<div class="cld_container">
+			<div class="cld_header">
+					<input type="button" class="cld_btn_lastYear" value="<<"/>
+					<input type="button" class="cld_btn_lastMonth" value="<"/>
+					<span class="cld_span_yrMonth">2014年9月</span>
+					<input type="button" class="cld_btn_nextMonth" value=">"/>
+					<input type="button" class="cld_btn_nextYear" value=">>"/>
+					<input type="button" class="cld_btn_restore" value="还原" />
+			</div>
+			<div class="cld_body"></div>
+	</div>
+#相关HTML控件
+.cld_selc_formatType
+.cld_selc_titleType
+
+.cld_btn_lastYear
+.cld_btn_lastMonth
+.cld_btn_nextMonth
+.cld_btn_nextYear
+.cld_btn_restore
+
+.cld_span_yrMonth
+
+.cld_body (div)
+
+【CSS文件】
+#文件名:calendar_3.css
+#与样式相关的函数
+Calendar::buildCalendarGrid_en()  undone  //注意上月和下月的判断 月份差要 区别跨年的情况(-1 1 11 -11)
+Calendar::buildCalendarGrid_cn()  done
+#相关样式类
+日历栅格本身:cld_calendarGrid
+日历栅格title:cld_calendaGrid th
+
+上个月日期格子样式:cld_lastMthStyle
+本月日期格子样式:cld_curMthStyle
+下个月日期字体颜色:cld_nextMthStyle
+鼠标划过时样式:cld_mouseover
+休息日样式:cld_weekend
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+

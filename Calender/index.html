@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<!--注意引入的顺序-->
+<script src="jquery-1.7.2.js"></script>
+<script src="calendar_3_CldDate.js"></script>
+<script src="calendar_3_Calendar.js"></script>
+<script src="calendar_3_view.js"></script>
+
+<style>
+.cld_calendarGrid {	border:1px solid #000; border-collapse:collapse;text-align:center; }
+.cld_calendarGrid th {		border:1px solid #000;	background-color:#DDD;}
+.cld_calendarGrid td {		border:1px solid #000;	height:50px; width:70px;}
+.cld_calendarGrid span { display:inline-block; height:46px; width:66px; line-height:45px;}
+.cld_calendarGrid span:hover {	border:2px solid orange;	}
+.cld_lastMthStyle, .cld_nextMthStyle {	color:#AAA;	}
+.cld_weekend {  }
+.cld_today {		font-weight:bold;	color:blue; background-color:#DDD;}
+</style>
+</head>
+<body>
+	<label>日历格式</label>
+	<select class="cld_selc_formatType" autocomplete="off">
+		<option value="CN" selected="selected">中式</option>
+		<option value="EN">西式</option>
+	</select>
+	<label>日历标题</label>
+	<select class="cld_selc_titleType" autocomplete="off">
+		<option value="CN" selected="selected">中文</option>
+		<option value="EN">英文</option>
+		<option value="NUM">数字</option>
+	</select>
+	<br /><br />
+	
+	<div class="cld_container">
+			<div class="cld_header">
+					<input type="button" class="cld_btn_lastYear" value="<<"/>
+					<input type="button" class="cld_btn_lastMonth" value="<"/>
+					<span class="cld_span_yrMonth">2014年9月</span>
+					<input type="button" class="cld_btn_nextMonth" value=">"/>
+					<input type="button" class="cld_btn_nextYear" value=">>"/>
+					<input type="button" class="cld_btn_restore" value="还原" />
+			</div>
+			<br />
+			<div class="cld_body"></div>
+	</div>
+</body>
+</html>
+
+
+
+

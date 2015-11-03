@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+<link rel="stylesheet" type="text/css" href="dateSelector.css"/>
+<script src="jquery-1.7.2.js"></script>
+<script src="calendar_4_CldDate.js"></script>
+<script src="calendar_4_Calendar.js"></script>
+<script>
+$(function(){
+		
+		//在dts_calendar_out_container中写入calenfarGrid
+		var cld = new Calendar('-');
+		cld.buildCalendarData_cn();
+		var cldGrid = cld.buildCalendarGrid_cn("NUM");
+		var ctrlBar = cld.buildControlBar();
+	
+		var cld_1 = $("#cld_1");
+		cld_1.html(ctrlBar+cldGrid);
+
+		/*div内文字不选中的方案*/
+		//$(".dateSelector").css("-moz-user-select", "none").bind("selectstart", function(){return false;});
+		$(".dateSelector")[0].onselectstart=function(){return false;};
+		//$(".dateSelector")[0].style["-moz-user-select"]="red";		//此处不行
+		
+		var $dts = $(".dateSelector");
+
+		//添加6个日历控件对象
+		$dts.m_lastYrBtn = $("#cld_1 .cld_btn_lastYr");
+		$dts.m_lastMthBtn = $("#cld_1 .cld_btn_lastMth");
+		$dts.m_monthYr = $("#cld_1 .cld_span_monthYr");
+		$dts.m_nextMthBtn = $("#cld_1 .cld_btn_nextMth");
+		$dts.m_nextYrBtn = $("#cld_1 .cld_btn_nextYr");
+		$dts.m_calendar = cld;
+
+		$dts.click(function(){
+				var $dtsOutContainer = $(this).children(".dts_calendar_out_container");
+				$dtsOutContainer.toggleClass("dts_calendar_hide");
+
+				//每次打开的时候 monthYear显示今日日期
+				if(!$dtsOutContainer.hasClass("dts_calendar_hide")){
+						$dts.m_monthYr.html(cld.m_toDate.toString());
+				}
+		});
+
+		$dts.m_lastYrBtn.click(function(e){		//上一年
+				cld.minusYear();
+				cld.buildCalendarData_cn(cld.m_curDate);
+				cldGrid = cld.buildCalendarGrid_cn("NUM");
+				$("#cld_1 .cld_tb_calendarGrid").replaceWith(cldGrid);
+				$dts.m_monthYr.html(cld.m_curDate.toString());
+
+				e.stopPropagation();
+		});
+
+		$dts.m_lastMthBtn.click(function(e){		//上个月
+				cld.minusMonth();
+				cld.buildCalendarData_cn(cld.m_curDate);
+				cldGrid = cld.buildCalendarGrid_cn("NUM");
+				$("#cld_1 .cld_tb_calendarGrid").replaceWith(cldGrid);
+				$dts.m_monthYr.html(cld.m_curDate.toString());
+
+				e.stopPropagation();
+		});
+
+		$dts.m_nextMthBtn.click(function(e){		//下个月
+				cld.addMonth();
+				cld.buildCalendarData_cn(cld.m_curDate);
+				cldGrid = cld.buildCalendarGrid_cn("NUM");
+				$("#cld_1 .cld_tb_calendarGrid").replaceWith(cldGrid);
+				$dts.m_monthYr.html(cld.m_curDate.toString());
+
+				e.stopPropagation();
+		});
+
+		$dts.m_nextYrBtn.click(function(e){		//下一年
+				cld.addYear();
+				cld.buildCalendarData_cn(cld.m_curDate);
+				cldGrid = cld.buildCalendarGrid_cn("NUM");
+				$("#cld_1 .cld_tb_calendarGrid").replaceWith(cldGrid);
+				$dts.m_monthYr.html(cld.m_curDate.toString());
+
+				e.stopPropagation();
+		});
+
+		
+		/*鼠标滑入cld_tb_calendarGrid td*/
+		$("#dts_1").delegate(".cld_tb_calendarGrid td", "mouseover", function(){
+				$(this).addClass("dts_calendar_over");
+		}).delegate(".cld_tb_calendarGrid td", "mouseout", function(){
+
+				$(this).removeClass("dts_calendar_over");
+
+		}).delegate(".cld_tb_calendarGrid td", "click", function(e){
+				var $curTd = $(this), $curTr = $curTd.parent();
+				var rowIndex = $curTr.index(), colIndex = $curTd.index();
+				var cldDate = cld.getCertainDateObj(rowIndex, colIndex);
+				
+				//显示在dts_dtstr上
+				$("#dts_1 .dts_dtstr").html(cldDate.toString());
+				$("#txt_date").val(cldDate.toString());
+		});
+});
+</script>
+</head>
+<html>
+<div id="dts_1" class="dateSelector" 1onselectstart="return false;">
+	<span class="dts_dtstr"></span>
+	<input id="txt_date" type="hidden" name="date"/>
+	<span class="dts_small_ico"></span>
+	<div id="cld_1" class="dts_calendar_out_container dts_calendar_hide"></div>
+</div>
+</html>
