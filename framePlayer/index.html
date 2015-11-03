@@ -1,0 +1,299 @@
+<!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml' lang='utf-8'>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'/>
+<style>
+* {
+	margin:0;
+	padding:0;
+}
+body {
+	padding:20px;
+}
+#container {
+	position:relative;
+	border:1px solid #35B9EF;
+	border-top:0;
+	width:340px;
+	height:40px;
+}
+#displayDiv {
+	position:absolute;
+	/*border:1px solid blue;	/*调试*/
+	background:url(play.png) no-repeat transparent -35px 0;
+	top:5px;
+	left:5px;
+	width:30px;
+	height:30px;
+}
+#progressDiv {
+	position:relative;
+	top:10px;
+	left:40px;
+	border:1px solid #DDEBF4;
+	width:298px;
+	height:20px;
+}
+#progressBar {
+	position:absolute;
+	background:#EDD112;
+	top:6px;
+	width:298px;
+	height:8px;
+}
+#controlBtn {
+	position:absolute;
+	left:0;
+	z-index:999;
+	width:10px;
+	height:20px;
+	background:gray;
+}
+#show {
+	margin-left:15px;
+	margin-top:5px;
+	font-size:14px;
+}
+#pic {
+	border:1px solid #35B9EF;
+	background:url(ring1.jpg) no-repeat;
+	cursor:move;
+	width:400px;
+	height:300px;
+}
+</style>
+<script type='text/javascript' src="jquery.js"></script>
+<script type='text/javascript'>
+	function autoPlay(){
+		g_curPosi++
+		if(g_curPosi<0 || g_curPosi>288) g_curPosi=0;
+
+		var picNum=Math.floor(g_curPosi/g_step);		//显示第picNum张图片
+		if(g_curPosi==288) picNum=0;
+
+		var picR=Math.floor(picNum/10);		//行索引;
+		var picC=picNum%10;		//列索引
+
+		$("#show span.posi").html(g_curPosi+"/288");
+		$("#show span.index").html("row:"+picR+ " col:"+picC);
+		
+		g_$controlBtn.css("left", g_curPosi);
+		g_$pic.css("background-position", "-"+picC*400+"px -"+picR*300+"px");
+	}//end funcDef-autoPlay
+
+	$(document).ready(function(){
+		window.g_$controlBtn=$("#controlBtn");
+		window.g_$pic=$("#pic");
+		window.g_isPlay=false;		//是否在播放
+		window.g_controlBarHanlder=0;
+		window.g_progressDivLeftX=$("#progressDiv").offset().left;
+		window.g_curPosi=0;
+		window.g_step=Math.floor(288/90*100)/100;			//90张
+
+		$("#displayDiv").click(function(){
+			if(g_isPlay){	//如果正在播放
+				g_isPlay=false;
+				$(this).css("background-position", "-35px 0");
+
+				clearInterval(g_controlBarHandler);
+			}else{
+				g_isPlay=true;
+				$(this).css("background-position", "0 0");
+				g_controlBarHandler=setInterval(autoPlay, 30);
+			}
+		});//end click
+
+		/*拖拽效果*/
+		$("#controlBtn").mousedown(function(e){
+			document.body.onselectstart=function(){
+				return false;
+			}
+
+			var offset=$(this).offset();
+			window.g_diffX=e.pageX-offset.left;		//鼠标与拖拽对象的相对水平距离
+
+			$(document).mousemove(function(e){
+					if(g_isPlay){			//如果是播放的，则暂停
+						g_isPlay=false;
+						$("#displayDiv").css("background-position", "-35px 0");
+						clearInterval(g_controlBarHandler);
+					}
+
+					g_curPosi=e.pageX-g_diffX-61;			//61是拖拽对象相对于浏览器的左边距离
+										
+					if(g_curPosi<0) g_curPosi=0;
+					if(g_curPosi>288) g_curPosi=288;		//288是进度条的长度
+
+					var picNum=Math.floor(g_curPosi/g_step);		//显示第picNum张图片
+					if(g_curPosi==288) picNum=199;
+
+					var picR=Math.floor(picNum/10);		
+					var picC=picNum%10;
+
+					g_$controlBtn.css("left", g_curPosi);
+					g_$pic.css("background-position", "-"+picC*400+"px -"+picR*300+"px");
+
+					$("#show span.posi").html(g_curPosi+"/288");
+					$("#show span.index").html("row:"+picR+ " col:"+picC);
+			});
+		});//endEvt-mousedown
+
+		$(document).mouseup(function(){
+			$(this).unbind("mousemove");
+			document.body.onselectstart=function(){
+				return true;
+			}
+		});
+
+		/*展示框的移动效果*/
+		$("#pic").mousedown(function(e){
+
+			var offset=$(this).offset();
+			window.g_diffX=e.pageX-offset.left;		//鼠标与拖拽对象的相对水平距离
+			window.g_oldX=e.pageX;				//点击时鼠标相对浏览器的x坐标
+
+			$(this).mousemove(function(e){
+					
+				if(g_isPlay){			//如果是播放的，则暂停
+					g_isPlay=false;
+					$("#displayDiv").css("background-position", "-35px 0");
+					clearInterval(g_controlBarHandler);
+				}
+
+				var moveX=e.pageX-g_oldX;		//鼠标移动的距离
+				var thePosi=g_curPosi+moveX;
+			
+				if(thePosi>288){
+					thePosi=thePosi%288;
+				}else if(thePosi<0){
+					thePosi+=288;
+				}
+				
+					var picNum=Math.floor(thePosi/g_step);		//显示第picNum张图片
+					if(288==thePosi) picNum=199;
+
+					var picR=Math.floor(picNum/10);		
+					var picC=picNum%10;
+
+					g_$controlBtn.css("left", thePosi);
+					g_$pic.css("background-position", "-"+picC*400+"px -"+picR*300+"px");
+
+					$("#show span.posi").html(thePosi+"/288");
+					$("#show span.index").html("row:"+picR+ " col:"+picC);
+			});
+		});//end mousedown
+		$("#pic").mouseup(function(){
+			$(this).unbind("mousemove");
+			g_curPosi=parseInt(g_$controlBtn.css("left"));
+		});/*展示框的移动效果 end*/
+		
+		/*点击滚动条效果*/
+		$("#progressDiv").click(function(e){			
+			/*滑块跳跃*/
+			g_curPosi=e.pageX-61;		//鼠标点击处在progressDiv内的相对距离
+			$("#controlBtn").css("left", g_curPosi);
+			if(g_curPosi<0) g_curPosi=0;
+					if(g_curPosi>288) g_curPosi=288;		//288是进度条的长度
+
+					var picNum=Math.floor(g_curPosi/g_step);		//显示第picNum张图片
+					if(g_curPosi==288) picNum=199;
+
+					var picR=Math.floor(picNum/10);		
+					var picC=picNum%10;
+
+					g_$controlBtn.css("left", g_curPosi);
+					g_$pic.css("background-position", "-"+picC*400+"px -"+picR*300+"px");
+
+					$("#show span.posi").html(g_curPosi+"/288");
+					$("#show span.index").html("row:"+picR+ " col:"+picC);
+
+		});/*点击滚动条效果end */
+
+		/*滚轮效果*/
+		function wheelRun(e){
+				e=e||window.event;
+				var val=0;
+				var isForward=true;		//是否是前进
+
+				if(e.wheelDelta){		//非FF
+					val=e.wheelDelta;
+				}else if(e.detail){		//FF
+					val=e.detail
+				}
+				if(val<0) isForward=false;		//后退
+
+				//处理播放
+				if(g_isPlay){			//如果是播放的，则暂停
+					g_isPlay=false;
+					$("#displayDiv").css("background-position", "-35px 0");
+					clearInterval(g_controlBarHandler);
+				}
+
+				if(isForward) 
+					g_curPosi+=Math.floor(2*g_step);
+				else
+				    g_curPosi-=Math.floor(2*g_step);
+
+				if(g_curPosi<=0) 
+					g_curPosi=288;
+				else if(g_curPosi>=288) 
+					g_curPosi=0;		//288是进度条的长度
+
+					var picNum=Math.floor(g_curPosi/g_step);		//显示第picNum张图片
+					if(g_curPosi==288) picNum=199;
+
+					var picR=Math.floor(picNum/10);		
+					var picC=picNum%10;
+
+					g_$controlBtn.css("left", g_curPosi);
+					g_$pic.css("background-position", "-"+picC*400+"px -"+picR*300+"px");
+
+					$("#show span.posi").html(g_curPosi+"/288");
+					$("#show span.index").html("row:"+picR+ " col:"+picC);
+					e.preventDefault();
+				
+		}//end funcDef-wheelRun
+		
+		/*当鼠标在播放屏幕内是才有滚轮事件*/
+		$("#pic").mouseenter(function(){
+			//注册滚轮事件
+			if(document.addEventListener){
+				document.addEventListener("DOMMouseScroll", wheelRun, false);
+			}
+			window.onmousewheel=document.onmousewheel=wheelRun;
+		}).mouseleave(function(){
+			//撤销滚轮事件
+			if(document.addEventListener){
+				document.addEventListener("DOMMouseScroll","", false);
+			}
+			window.onmousewheel=document.onmousewheel="";
+		});
+
+		
+	});//endFunc ready
+</script>
+</head>
+
+<body>
+	<div id="pic"></div>
+	<div id="container">
+		<div id="displayDiv"></div>
+		<div id="progressDiv">
+			<span id="controlBtn"></span>
+			<span id="progressBar"></span>
+		</div>
+	</div>
+	<div id="show">
+		当前位置：<span class="posi">0/288</span>
+		图片索引：<span class="index">0</span>&nbsp;&nbsp;
+	</div>
+	<textarea rows="100" cols="11" readonly></textarea>
+	<textarea rows="100" cols="11" readonly></textarea>
+	<textarea rows="100" cols="11" readonly></textarea>
+	<textarea rows="100" cols="11" readonly></textarea>
+	<textarea rows="100" cols="11" readonly></textarea>
+	<textarea rows="100" cols="11" readonly></textarea>
+</body>
+</html>
