@@ -1,0 +1,94 @@
+.memo_container {  background-color:#2379BF; height:550px; padding-right:2px; display:inline-block;}
+	.memo_contentDashboard { 1border:1px solid blue; background:url(../images/memo_bg.png);width:810px; float:left;}
+		.memo_top {1background-color:pink; height:45px;}
+			.memo_srhWrap {float:left; margin:10px 0 0 305px;position:relative; }
+				#memo_txt_srh {width:170px;height:18px;position:absolute;border:0;left:3px;top:4.5px;outline:0;margin-left:10px;}
+				#memo_btn_srh {width:40px;height:24.5px;position:absolute;right:1px;top:1.5px;background:transparent;
+						border:0;cursor:pointer;}
+			.memo_close {float:right; margin:10px 15px 0 0;}
+				#memo_btn_close {border:0;cursor:pointer;}
+
+		.memo_cldtask {1background-color:green; height:320px;}
+			.memo_cld_container{float:left;background-color:#FFF;width:300px;height:320px;margin-left:5px;}
+					.memo_cld_btngp {1background-color:#EEE;height:25px; width:280px; padding:10px 10px;}
+							.memo_cld_btngp table {1border:1px solid red;width:280px;}
+							.td_lastyr, .td_lastmth, .td_nextmth, .td_nextyr {width:30px;}
+							.td_curdate {width:160px; text-align:center;}
+							#memo_btn_lastyr, #memo_btn_lastmth, #memo_btn_nextmth, #memo_btn_nextyr {cursor:pointer;}
+							#memo_span_curDate {cursor:pointer;}
+
+					.memo_cld_content {height:210px;1border:1px solid red;}
+						.memo_tb_calendar {width:300px;height:205px;text-align:center;border-spacing:3px;}
+						.memo_tb_calendar td {1border:1px solid blue; position:relative;cursor:pointer;}
+						.memo_tb_calendar td:hover {background-color:#BAD9EF;color:#FFF;}
+						.memo_taskflag {position:absolute; bottom:-5px; left:11px;}
+						.memo_tb_calendar span {display:inline-block;width:20px; height:20px;}
+						.memo_tb_calendar td.memo_td_today {background-color:#AAA;}
+						.memo_tb_calendar td.memo_td_today:hover {background-color:#BAD9EF;}
+						.memo_td_lastMthStyle, .memo_td_nextMthStyle {	color:#AAA;}
+						.memo_taskCompFlag {position:absolute;top:17px;left:9.5px;}
+
+					.memo_cld_addmemo {1background-color:#EEE;height:65px;}
+							#memo_cld_btn_createTask {width:150px; height:25px;border:2px solid #D2DCF0;background-color:#FFF;
+									margin:15px 0 0 76px; color:#3E81C3;cursor:pointer;}
+				
+			.memo_msglst_container{float:right; background-color:#FFF;width:500px;height:320px;margin-right:3px;
+					overflow-y:auto;overflow-x:hidden;cursor:pointer;}
+					.memo_msglst_container table {border-collapse:collapse;}
+					.memo_msglst_container table td {border:1px dashed #CCC; height:45px;font-size:14px;}
+					.memo_msglst_container table tr:first-child td {border-top:0;}
+					.memo_msglst_container table td:first-child {border-left:0;text-align:center;}
+					.memo_msglst_container table td:last-child {border-right:0;}
+					.memo_msglst_digest {padding-left:10px;line-height:25px;}
+
+					.memo_ico_msgtype {float:right;width:20px;margin-right:5px;height:20px;}
+					.memo_msglst_td_date { width:50px; }
+					.memo_msglst_td_content { width:450px;}
+
+		.memo_msgdtl {1background-color:orange;height:183px;}
+				.memo_msgdtl_left {1background-color:pink;float:left;margin-top:2px;height:180px;width:750px;
+						margin-left:5px;}
+						.memo_tb_msgContent {1border:1px solid #B9B3B2;width:750.5px;height:180px;border-collapse:collapse;
+								background-color:#FFF;}
+						.memo_tb_msgContent tr:first-child {height:35px;}
+						.meme_tb_msgContent tr:nth-child(2) {height:125px;}
+
+						.memo_tb_msgContent td {border:1px solid #B9B3B2;font-size:0.9em;font-family:"微软雅黑";}
+						.memo_tb_msgContent .memo_td_msgContent_col1 {width:50px;}
+						.memo_tb_msgContent .memo_td_msgContent_col2 {width:700px;}
+						.memo_tb_msgContent tr:nth-child(-n+2) td:first-child {background-color:#EEE;text-align:center; }
+						
+						.memo_msgSubject_edit {height:21px;outline:0;padding:7px 10px;overflow:auto;}
+						.memo_msgComment_edit {height:101px;outline:0;padding:7px 10px;overflow:auto;}
+						.memo_msg_attrbar {1border:1px solid red;background:#FFF;height:20px;}
+								#memo_span_msg_type {float:left;margin-left:20px;}
+								#memo_span_msg_relativeperson {float:left;color:blue;margin-left:10px;}
+								#memo_span_msg_createdate {float:right;margin-right:30px;}
+
+				.memo_msgdtl_right {float:right;background-color:#FFF;margin-top:2px;height:180px;width:50px;
+						margin-right:3px;border-left:2px solid #CCC;}
+						.memo_msgdtl_opts {list-style-type:none;padding:0;margin:0px;}
+						.memo_msgdtl_opts li {margin:0;padding:0;cursor:pointer;}
+						.memo_msgdtl_opts li:hover {background:#EEE;}
+						.memo_msgdtl_opts li span {vertical-align:bottom;}
+
+	.memo_gpDashboard {1background-color:#FFF; width:165px; height:550px;float:right;margin-left:3px;
+			padding-right:2px;1display:none;}
+		.memo_gpListContainer {background-color:#FFF; margin-top:4px; margin-bottom:0px; list-style-type:none; 
+				overflow-y:auto; height:476px; padding:10px 0; color:#3E81C3;}
+
+			.memo_gpListContainer li {height:45px;1border:1px solid red;cursor:pointer;}
+			.memo_gpListContainer li:hover {background:#EEE;}
+			.memo_gpListContainer li span {line-height:45px;padding-left:60px;background-repeat:no-repeat;font-family:"微软雅黑";}
+		#memo_btn_send {width:165px; height:42px;background-color:#FFF; margin-top:5px;color:#379BD7;
+				border:#D3DCF0;font-size:16px;font-family:"微软雅黑";cursor:pointer;}
+
+/*其他控制样式*/
+.memo_board_hide, .memo_gplist_hide, .memo_btn_createtask_hide {display:none;}
+.memo_btn_gplist_on, .memo_gplist_selected {background-color:#EEE;}
+.memo_btn_send_off {background-color:#EEE !important;color:#AAA !important;}
+.memo_msg_selected {border:2px solid #E5A150;}
+.memo_donetask_style { text-decoration:line-through;}
+
+.memo_subjboard_disable, .memo_commboard_disable, .memo_attrbar_disable{background-color:#F6F7F7;}
+.cld_td_selected {background-color:#1E94D4 !important; color:#FFF !important;}

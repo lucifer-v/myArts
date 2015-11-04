@@ -1,0 +1,29 @@
+/** 任务状态 **/
+.memo_ico_lastmth_taskundo {background:url(../images/memo_icos_1.png) 0px 0px; display:inline-block; width:20px; height:20px;}
+.memo_ico_lastmth {background:url(../images/memo_icos_1.png) 0px -20px; display:inline-block; width:20px; height:20px;}
+.memo_ico_nextmth {background:url(../images/memo_icos_1.png) 0px -40px; display:inline-block; width:20px; height:20px;}
+.memo_ico_lastyr {background:url(../images/memo_icos_1.png) 0px -60px; display:inline-block; width:20px; height:20px;}
+.memo_ico_nextyr {background:url(../images/memo_icos_1.png) 0px -80px; display:inline-block; width:20px; height:20px;}
+.memo_ico_taskundo {background:url(../images/memo_icos_1.png) 0px -100px; display:inline-block; width:20px; height:20px;}
+.memo_ico_tasktodo {background:url(../images/memo_icos_1.png) 0px -120px; display:inline-block; width:20px; height:20px;}
+.memo_ico_close {background:url(../images/memo_icos_1.png) 0px -140px; display:inline-block; width:20px; height:20px;}
+.memo_ico_senthasread {background:url(../images/memo_icos_1.png) 0px -160px; display:inline-block; width:20px; height:20px;}
+.memo_ico_sentunread {background:url(../images/memo_icos_1.png) 0px -180px; display:inline-block; width:20px; height:20px;}
+.memo_ico_rcvhasread {background:url(../images/memo_icos_1.png) 0px -200px; display:inline-block; width:20px; height:20px;}
+.memo_ico_taskdown {background:url(../images/memo_icos_1.png) 0px -220px; display:inline-block; width:20px; height:20px;}
+.memo_ico_rcvunread {background:url(../images/memo_icos_1.png) 0px -240px; display:inline-block; width:20px; height:20px;}
+
+/** 功能列表 **/
+.memo_ico_func { display:inline-block; width:50px; height:45px; cursor:pointer; }
+.memo_ico_msgsave {background:url(../images/memo_icos_2.png) 0px 0px; }
+.memo_ico_msgdone {background:url(../images/memo_icos_2.png) 0px -45px;}
+.memo_ico_msgundone {background:url(../images/memo_icos_2.png) 0px -90px;}
+.memo_ico_msggplist {background:url(../images/memo_icos_2.png) 0px -135px;}
+.memo_ico_msgback {background:url(../images/memo_icos_2.png) 0px -180px;}
+.memo_ico_msgcancel {background:url(../images/memo_icos_2.png) 0px -225px;}
+.memo_ico_useronline {background:url(../images/memo_icos_2.png) 0px -270px;}
+.memo_ico_useroffline {background:url(../images/memo_icos_2.png) 0px -315px;}
+.memo_ico_msgdelete {background:url(../images/memo_icos_2.png) 0px -360px;}
+.memo_ico_msgcreate {background:url(../images/memo_icos_2.png) 0px -405px;}
+
+.memo_btn_srh {background:url(../images/memo_btn_srh.png); display:inline-block; width:242px; height:28px;}

@@ -1,5 +1,12 @@
 # myArts
 一些小项目或者能够复用的小插件，具体功能请君往下一看
+
+##Memorandum备忘录
+基于日历和既存用户管理系统的备忘录和任务派遣系统。
+用于公司员工之前通信以及下级向上级派遣任务。
+具体的说明请看Memorandum控件自己的<a href="http://github.com/lucifer-v/Memorandum">README</a>
+###项目DEMO
+
 ##Calener万年历
 实现了一个js的日历库，万年历是对此库的应用
 可以依赖此库做很多扩展的应用

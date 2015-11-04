@@ -1,0 +1,127 @@
+<!--模拟user1的登录-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link rel="stylesheet" href="css/memoUI.css" type="text/css"/>
+<link rel="stylesheet" href="css/memo_ico.css" type="text/css"/>
+<script src="js/jquery-1.7.2.js"></script>
+<script src="js/lucius.common.js"></script>
+<script src="js/Memo_CldDate.js"></script>
+<script src="js/Memo_Calendar.js"></script>
+<script src="js/memoUI.js"></script>
+<script>
+$(function(){
+
+		//窗口改变大小(要考虑垂直和水平的)
+		var gpDashbdRtOffset = 0;
+		$(window).resize(function(){
+				//当window的宽度超过memo_contentDashboard 175px时，才显示
+				var $contentDbd = $(".memo_contentDashboard");
+				var left = $contentDbd.offset().left;
+				var width = $contentDbd.width();
+				var rightOffset = left + width ;
+				
+				//如果memo_btn_msggplist存在  并且 已经按下
+				var $btnMsggplist = $("#memo_btn_msggplist");
+				if( 1 == $btnMsggplist.length &&
+					 $btnMsggplist.parent().hasClass("memo_gplist_on") ){
+
+					 	if($(this).width() < rightOffset + 200){
+								$(".memo_gpDashboard").addClass("memo_gplist_hide");
+						}else{
+								$(".memo_gpDashboard").removeClass("memo_gplist_hide");
+						}
+					 
+				}else{
+						return;
+				}
+		});
+})
+</script>
+</head>
+<body>
+<input id="showMemo" type="button" value="显示备忘录"/>
+
+<div id="memo_out_container" class="memo_board_hide">
+		<div class="memo_container">
+				<div class="memo_contentDashboard">
+						<div class="memo_top">
+								<div class="memo_srhWrap memo_btn_srh">
+										<input type="text" id="memo_txt_srh" autocomplete="off"
+										/><span id="memo_btn_srh"></span>
+								</div>
+								<div class="memo_close memo_ico_close"
+										><span id="memo_btn_close" class="memo_ico_close"></span>
+								</div>
+						</div><!--memo_top-->
+						
+						<div class="memo_cldtask">
+								<div class="memo_cld_container">
+										<div class="memo_cld_btngp">
+											<table>
+												<tr>
+													<td class="td_lastyr"><span id="memo_btn_lastyr" class="memo_ico_lastyr"></span></td>
+													<td class="td_lastmth"><span id="memo_btn_lastmth" class="memo_ico_lastmth"></td>
+													<td class="td_curdate">
+															<span id="memo_span_curDate"></span>
+													</td>
+													<td class="td_nextmth"><span id="memo_btn_nextmth" class="memo_ico_nextmth"></span></td>
+													<td class="td_nextyr"><span id="memo_btn_nextyr" class="memo_ico_nextyr"></span></td>
+												</tr>
+											</table>
+										</div>
+										<div id="memo_the_cld" class="memo_cld_content"></div>
+										<div class="memo_cld_addmemo">
+											<input id="memo_cld_btn_createTask" class="memo_btn_createtask_hide"
+													type="button" value="+&nbsp;&nbsp;新建事件"/>
+										</div>
+								</div><!--memo_cld_container-->
+
+								<div class="memo_msglst_container">
+									<table><tbody></tbody></table>
+								</div>
+						</div><!--memo_cldtask-->
+
+						<div class="memo_msgdtl">
+							<div class="memo_msgdtl_left">
+							<table class="memo_tb_msgContent">
+									<tr>
+										<td class="memo_td_msgContent_col1"><span>主题</span></td>
+										<td class="memo_td_msgContent_col2">
+											<div class="memo_msgSubject_edit" contenteditable="true">edit</div>
+										</td>
+									</tr>
+									<tr>
+										<td><span>备<br /><br />注</span></td>
+										<td>
+											<div class="memo_msgComment_edit" contenteditable="true"></div>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+										<div class="memo_msg_attrbar">
+											<span id="memo_span_msg_type">from</span>
+											<span id="memo_span_msg_relativeperson">zhang san</span>
+											<span id="memo_span_msg_createdate">09:10</span>
+										</div>
+										</td>
+									</tr>
+							</table>
+	
+							</div>
+							<div class="memo_msgdtl_right">
+									<ul class="memo_msgdtl_opts"></ul>
+							</div>
+						</div><!--memo_msgdtl-->
+				</div><!--memo_contentDashboard-->
+
+				<div class="memo_gpDashboard memo_gplist_hide">
+						<ul class="memo_gpListContainer">
+						</ul>
+						<input id="memo_btn_send" class="memo_btn_send_off" value="发&nbsp;&nbsp;送" type="button"/>
+				</div><!--memo_gpDashboard-->
+		</div><!--memo_container-->
+</div><!--memo_out_container-->
+</body>
+</html>
