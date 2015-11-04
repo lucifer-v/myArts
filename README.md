@@ -6,6 +6,9 @@
 用于公司员工之前通信以及下级向上级派遣任务。
 具体的说明请看Memorandum控件自己的<a href="http://github.com/lucifer-v/Memorandum">README</a>
 ###项目DEMO
+<img src="images/Memorandum_demo.png" width="500"/>
+###演示地址
+<a href="http://lucifer-v.net/Memorandum/" target="_blank">备忘录[lucifer-v.net/Memorandum/]</a>
 
 ##Calener万年历
 实现了一个js的日历库，万年历是对此库的应用
