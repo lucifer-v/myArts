@@ -16,14 +16,14 @@
 
 ##界面描述
 ###基本界面
-<img src="images/memorandum_basic1.png" width="500" />
+<img src="images/memorandum_basic1.png" width="800" />
 ###细节功能
-<img src="images/memorandum_detail.png" width="500" />
+<img src="images/memorandum_detail.png" width="800" />
 
 ###状态图标集合
-<img src="images/state_icoset.png" width="500" />
+<img src="images/state_icoset.png" width="600" />
 ###任务操作图标集合
-<img src="images/optlist_icoset.png" width="500"/>
+<img src="images/optlist_icoset.png" width="600"/>
 
 ##功能描述
 ###任务列表实时更新

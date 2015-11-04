@@ -4,7 +4,7 @@
 ##Memorandum备忘录
 基于日历和既存用户管理系统的备忘录和任务派遣系统。
 用于公司员工之前通信以及下级向上级派遣任务。
-具体的说明请看Memorandum控件自己的<a href="http://github.com/lucifer-v/Memorandum">README</a>
+具体的说明请看Memorandum控件自己的<a href="https://github.com/lucifer-v/myArts/tree/master/Memorandum">README</a>
 ###项目DEMO
 <img src="images/Memorandum_demo.png" width="500"/>
 ###演示地址
