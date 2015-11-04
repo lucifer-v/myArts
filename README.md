@@ -12,14 +12,17 @@
 
 ##Calener万年历
 实现了一个js的日历库，万年历是对此库的应用
-可以依赖此库做很多扩展的应用
+可以依赖此库做很多扩展的应用   
+
 ###项目扩展
 1. 通信备忘录(已做出原型)  
 2. 日期拾取器(已做出原型)
 2. 签到-积分功能
-3. 其他可以想到的任何和日历形成有关的功能
+3. 其他可以想到的任何和日历形成有关的功能   
+
 ###项目DEMO1
-<img src="images/calender_demo.png" width="450" />
+<img src="images/calender_demo.png" width="450" />   
+
 ###演示地址
 <a href="http://lucifer-v.net/Calender/" target="_blank">Calener万年历[lucifer-v.net/Calender/]</a>
 
