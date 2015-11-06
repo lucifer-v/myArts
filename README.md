@@ -31,7 +31,7 @@
 2. 签到-积分功能
 3. 其他可以想到的任何和日历形成有关的功能
 ###项目DEMO1
-<img src="images/calender_demo.png" width="450" />  
+<img src="images/calender_demo.png" width="450" />
 ###演示地址
 <a href="http://lucifer-v.net/Calender/" target="_blank">Calener万年历[lucifer-v.net/Calender/]</a>
 
