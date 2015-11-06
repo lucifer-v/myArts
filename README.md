@@ -1,5 +1,16 @@
 # myArts
 一些小项目或者能够复用的小插件，具体功能请君往下一看
+##图片实时上传预览
+提供图片实时上传预览、删除的控件  
+可以通过设置option选项来更改上传按钮、上传过程、删除过程的图片
+可以通过设置param选项在灵活设置与后台交互的约定
+###待扩展
+1. 对IE8的支持
+2. 使用配置文件方式，减少使用时的开发成本
+###项目DEMO 
+<img src="images/picUploader_demo.png" width="160"/>
+###演示地址
+<a href="http://lucifer-v.net/FileUploader/" target="_blank">图片上传预览[lucifer-v.net/FileUploader/]</a>
 
 ##Memorandum备忘录
 基于日历和既存用户管理系统的备忘录和任务派遣系统。
@@ -12,17 +23,14 @@
 
 ##Calener万年历
 实现了一个js的日历库，万年历是对此库的应用
-可以依赖此库做很多扩展的应用   
-
+可以依赖此库做很多扩展的应用  
 ###项目扩展
 1. 通信备忘录(已做出原型)  
 2. 日期拾取器(已做出原型)
 2. 签到-积分功能
 3. 其他可以想到的任何和日历形成有关的功能   
-
 ###项目DEMO1
-<img src="images/calender_demo.png" width="450" />   
-
+<img src="images/calender_demo.png" width="450" />  
 ###演示地址
 <a href="http://lucifer-v.net/Calender/" target="_blank">Calener万年历[lucifer-v.net/Calender/]</a>
 

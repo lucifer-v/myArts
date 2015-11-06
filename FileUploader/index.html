@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/fileUploader.js"></script>
+<script type="text/javascript" src="js/lucius.common.js"></script>
+<script>
+$(function(){
+		//1. 得到待操作的表单对象
+		var $formPic = $("#form_pic");
+		
+		//2. 准备选项对象
+		var option = {
+			formPadding:10,
+			imgWd:120,	imgHt:120,
+			border:1,	borderColor:"#BFBFBF",
+			delIcoPath:"images/litIcos.png",
+			delIcoWd:30,	 delIcoHt:30,
+			delIcoPosi:"0 -180px",
+			delIcoTop:-7,	delIcoRight:-8,
+			addIcoPath:"images/toAdd_120.png",
+			addIcoWd:120,	 addIcoHt:120,
+			uploadingGifPath:"images/loading.gif",
+			uploadingGifWd:24,	uploadingGifHt:24,
+			delingGifPath:"images/deling.gif",
+			delingGifWd:72,	delingGifHt:32,
+			reqIntervalTime:1000,
+			reqTimesAllow:3,
+			upfHandler:"uploadHandlers/uploadedPicHandler.php",
+			fileExistChkHandler:"uploadHandlers/rspIsFileExists.php",
+			fileDeleteHandler:"uploadHandlers/rspDeleteFile.php"
+		};
+		
+		//3. 准备参数对象
+		var param = {
+			hasPrevPic:false,
+			//toUploadMode
+			extAllow:['png', 'jpg', 'gif'],
+			separator:'_',
+			info_picId:"23455",
+			info_name:"DR11031"
+		};
+
+		//4. 实例化上传控件
+		var picUploader = new FileUploader( $formPic, option, param );
+
+		//2.1得到操作表单
+		var $formPicUploaded = $("#form_uploadedpic");
+
+		//2.2
+		option = {
+			formPadding:10,
+			imgWd:120,	imgHt:120,
+			border:1,	borderColor:"#BFBFBF",
+			delIcoPath:"images/litIcos.png",
+			delIcoWd:30,	 delIcoHt:30,
+			delIcoPosi:"0 -180px",
+			delIcoTop:-7,	delIcoRight:-8,
+			addIcoPath:"images/toAdd_120.png",
+			addIcoWd:120,	 addIcoHt:120,
+			uploadingGifPath:"images/loading.gif",
+			uploadingGifWd:24,	uploadingGifHt:24,
+			delingGifPath:"images/deling.gif",
+			delingGifWd:72,	delingGifHt:32,
+			reqIntervalTime:1000,
+			reqTimesAllow:3,
+			upfHandler:"uploadHandlers/uploadedPicHandler_out.php",
+			fileExistChkHandler:"uploadHandlers/rspIsFileExists_out.php",
+			fileDeleteHandler:"uploadHandlers/rspDeleteFile_out.php"
+		};
+
+		param = {
+			//for uploadedMode
+			hasPrevPic:true,
+			prevPicInfo:"images_pic1_jpg",
+			movePicHandler:"uploadHandlers/rspMoveToTmpOut.php",
+
+			//for UploadMode
+			extAllow:['png', 'jpg', 'gif'],
+			separator:'_',
+			info_saveDir:"images",
+			info_name:"11233"
+		};
+
+		var formPicUploaded = new FileUploader( $formPicUploaded, option, param );
+
+}); //load
+</script>
+<link type="text/css" rel="stylesheet" href="css/fileUploaderCss.css" />
+</head>
+<body>
+	<h5>点击上传图片</h5>
+	<form id="form_pic" target="curIfrm_pic">
+		<iframe id="curIfrm_pic" name="curIfrm_pic"></iframe>
+	</form>
+	<h5>加载已上传的图片</h5>
+	<form id="form_uploadedpic" target="curIfrm_uploadedpic">
+		<iframe id="curIfrm_uploadedpic" name="curIfrm_uploadedpic"></iframe>
+	</form>
+</body>
+</html>
