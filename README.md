@@ -10,6 +10,7 @@
 2. 使用配置文件方式，减少使用时的开发成本  
 ###项目DEMO
 <img src="images/picUploader_demo.png" width="160"/>
+  
 ###演示地址
 <a href="http://lucifer-v.net/FileUploader/" target="_blank">图片上传预览[lucifer-v.net/FileUploader/]</a>  
 
@@ -19,7 +20,8 @@
 具体的说明请看Memorandum控件自己的<a href="https://github.com/lucifer-v/myArts/tree/master/Memorandum">README</a>
 ###项目DEMO
 <img src="images/Memorandum_demo.png" width="500"/>
-### 演示地址 ###
+  
+###演示地址
 <a href="http://lucifer-v.net/Memorandum/" target="_blank">备忘录[lucifer-v.net/Memorandum/]</a>
 
 ##Calener万年历
@@ -31,8 +33,9 @@
 2. 签到-积分功能
 3. 其他可以想到的任何和日历形成有关的功能
 ###项目DEMO1
-<img src="images/calender_demo.png" width="450" />  
-### 演示地址
+<img src="images/calender_demo.png" width="450" />
+  
+###演示地址
 <a href="http://lucifer-v.net/Calender/" target="_blank">Calener万年历[lucifer-v.net/Calender/]</a>
 
 ##DatePicker日期拾取器控件
