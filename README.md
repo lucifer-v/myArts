@@ -7,7 +7,7 @@
 可以通过设置param选项在灵活设置与后台交互的约定
 ###待扩展
 1. 对IE8的支持  
-2. 使用配置文件方式，减少使用时的开发成本
+2. 使用配置文件方式，减少使用时的开发成本  
 ###项目DEMO
 <img src="images/picUploader_demo.png" width="160"/>
 ###演示地址
@@ -31,7 +31,7 @@
 2. 签到-积分功能
 3. 其他可以想到的任何和日历形成有关的功能
 ###项目DEMO1
-<img src="images/calender_demo.png" width="450" />
+<img src="images/calender_demo.png" width="450" />  
 ###演示地址
 <a href="http://lucifer-v.net/Calender/" target="_blank">Calener万年历[lucifer-v.net/Calender/]</a>
 
