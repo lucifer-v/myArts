@@ -1,0 +1,4 @@
+<IfModule rewrite_module>
+	RewriteEngine	on
+	RewriteRule	su/([0-9a-zA-Z]{6})	su/index.php?short_url=$1
+</IfModule>

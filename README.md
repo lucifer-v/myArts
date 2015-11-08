@@ -1,6 +1,14 @@
 # myArts
 一些小项目或者能够复用的小插件，具体功能请君往下一看
 
+##短网址生成器
+将长网址生成短网址，方便web页面的推广
+###项目DEMO
+<img src="images/ShortUrl.png" width="423"/>
+
+###演示地址
+<a href="http://lucifer-v.net/ShortUrl" target="_blank">短网址生成[lucifer-v.net/ShortUrl/]</a> 
+
 ##图片实时上传预览  
 提供图片实时上传预览、删除的控件  
 可以通过设置option选项来更改上传按钮、上传过程、删除过程的图片  

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<style type="text/css">
+#txt_tu, #txt_su  {width:240px;}
+</style>
+</head>
+<body>
+	<form autocomplete="off">
+	<table id = "tbWrap">
+		<tr>
+			<td>真实网址：</td>
+			<td>
+				<input id="txt_tu" type="text" name="trueUrl"/>
+				<input id="btn_create" type="button" value="生成"/></td>
+		</tr>
+		<tr>
+			<td>短网址：</td>
+			<td><input type="text" id="txt_su" readonly="readonly"/></td>
+		</tr>
+	</table>
+	<form>
+</body>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script>
+	$(function(){
+			//真实网址如果没有http(s)://则添加http://
+			$("#txt_tu").blur(function(){
+					var $obj = $(this);
+					var url = $obj.val().trim();
+
+					if( !/^https?:\/\//.test(url) ){
+							$obj.val( "http://" + url );
+					}
+
+			});//blur
+
+			//ajax请求
+			$("#btn_create").click(function(){
+					var $tu = $("#txt_tu");
+					var 	trueUrl = $tu.blur().val();		//触发blur事件
+
+					//请求
+					$.post("response/rspCreateShortUrl.php", { 'trueUrl' : trueUrl }, function(_rspText, _state){
+							alert(_rspText);
+							if( "" !== _rspText ){
+									//alert(_rspText);
+									$("#txt_su").val(_rspText);
+							}else{
+									alert("系统繁忙");
+							}
+					});//get
+			});
+	});//load
+</script>
+</html>
